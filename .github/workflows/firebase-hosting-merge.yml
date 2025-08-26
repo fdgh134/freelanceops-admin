@@ -11,7 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # Node.js 설치
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18' # Firebase Hosting 권장 버전
+
+      # 의존성 설치
+      - run: npm ci
+
+      # 빌드
       - run: npm run build
+
+      # Firebase Hosting 배포
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
