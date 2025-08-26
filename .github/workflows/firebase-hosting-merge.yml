@@ -15,7 +15,8 @@ jobs:
       # Node.js 설치
       - uses: actions/setup-node@v4
         with:
-          node-version: '18' # Firebase Hosting 권장 버전
+          node-version: '20'
+          cache: 'npm'
 
       # 의존성 설치
       - run: npm ci
